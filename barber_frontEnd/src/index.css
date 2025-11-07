@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+.animate-modalIn {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Sao băng rơi */
+.shooting-star {
+    position: absolute;
+    width: 3px;
+    height: 100px;
+    background: linear-gradient(white, rgba(255, 255, 255, 0));
+    opacity: 0.8;
+    transform: rotate(45deg);
+    animation: shooting 3s linear infinite;
+}
+@keyframes shooting {
+    0% {
+        transform: translate(0, 0) rotate(45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-200px, 400px) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* Pháo hoa nổ */
+.fireworks-container {
+    pointer-events: none;
+}
+.firework {
+    position: absolute;
+    bottom: 0;
+    width: 4px;
+    height: 60px;
+    background: linear-gradient(to top, #ff0, transparent);
+    animation: fireworkLaunch 2s ease-out infinite;
+}
+@keyframes fireworkLaunch {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    60% { transform: translateY(-400px) scale(1.2); opacity: 1; }
+    100% { transform: translateY(-400px) scale(0); opacity: 0; }
+}
+.firework::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 25px;
+    height: 25px;
+    background: radial-gradient(circle, red, orange, yellow, lime, blue, indigo, violet);
+    border-radius: 50%;
+    opacity: 0;
+    animation: explosion 2s ease-out infinite;
+}
+@keyframes explosion {
+    60% { opacity: 0; transform: scale(0); }
+    70% { opacity: 1; transform: scale(2.5); }
+    100% { opacity: 0; transform: scale(0); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+    animation: fadeIn 0.15s ease-out;
+}
